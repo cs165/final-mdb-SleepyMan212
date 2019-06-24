@@ -5,10 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <title>CS193x Final Project</title>
     <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/main.css"/>
     <script src="/js/script.js" defer></script>
     </script>
   </head>
   <body>
     <!-- TODO(you): Add the HTML necessary to complete your final project. -->
+    <div id="app">
+
+      <header>
+          <h1>CCU 課程簡易查詢</h1>
+      </header>
+      <hr>
+      <div class="search_bar center">
+          <label>課程名稱: </label>
+          <input id="search" type="text" name="" value="">
+      </div>
+      <div class="couerse_panel">
+      </div>
+      <!-- {{courses}} -->
+    </div>
+
+    <template id="course">
+      <div class="course_box" >
+        <div class="course_type">
+          <span class="department" v-html='course.department'></span>
+          <span class="direction" v-if="course.category=='通識'" v-html='course.direction'></span>&nbsp&nbsp
+          <span class="grade"   v-else v-bind:style="color()" v-html='course.grade'></span>
+          <span class="category" v-html="course.category"></span>
+        </div>
+        <div class="course_name" v-html='course.class_name'></div>
+        <div class="course_teacher" v-html='course.teacher'></div>
+        <div class="course_time" v-html='course.time'></div>
+        <div class="course_location" v-html='course.location'></div>
+        <div class="link">
+          <a v-bind:href="ccuplus()" target="_blank">ccuplus</a>
+          <a v-bind:href="outline()" target="_blank">課程大綱</a>
+        </div>
+
+      </div>
+    </template>
+    <!-- <script src="./js/index.js"></script> -->
   </body>
 </html>
